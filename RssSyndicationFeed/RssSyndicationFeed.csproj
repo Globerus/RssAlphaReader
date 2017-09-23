@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FC69ACA-158F-487D-9B11-2DC7CB332875}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RssSyndicationFeed</RootNamespace>
+    <AssemblyName>RssSyndicationFeed</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\AtomConstants.cs" />
+    <Compile Include="Configuration\DublinCoreConstants.cs" />
+    <Compile Include="Configuration\GlobalConstants.cs" />
+    <Compile Include="Configuration\Interface\IConstants.cs" />
+    <Compile Include="Configuration\MediaRssConstants.cs" />
+    <Compile Include="Configuration\Rss20Constants.cs" />
+    <Compile Include="Controller\Atom10Controller.cs" />
+    <Compile Include="Controller\DublinCoreController.cs" />
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\MediaRssController.cs" />
+    <Compile Include="Controller\Rss20Controller.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssText.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationGuid.cs" />
+    <Compile Include="RssSyndicationExtensionManager.cs" />
+    <Compile Include="RssSyndicationFeedManager.cs" />
+    <Compile Include="Model\RssSyndicationFeedContext.cs" />
+    <Compile Include="Model\SubContent\Metadata\DublinCoreContext\DublinCoreExtensionContext.cs" />
+    <Compile Include="Model\Interface\IContext.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\MediaRssExtensionContext.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssContent.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssCopyright.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssCredit.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssHash.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssPlayer.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssRating.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssThumbnails.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationCategory.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationEnclosure.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationExtension.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationImage.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationItem.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationLink.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationPerson.cs" />
+    <Compile Include="Model\SubContent\RssSyndicationText.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
