@@ -36,15 +36,15 @@ namespace RssSyndicationFeed.Configuration
 
         public Dictionary<string, string> AttributeValueToProperty { get; set; } = new Dictionary<string, string>
         {
-            { "href", "" },
-            { "label", "" },
-            { "length", "" },
-            { "rel", "" },
-            { "scheme", "" },
-            { "src", "" },
-            { "term", "" },
-            { "title", "Text" },
-            { "type", "" }
+            //{ "href", "" },
+            //{ "label", "" },
+            //{ "length", "" },
+            //{ "rel", "" },
+            //{ "scheme", "" },
+            //{ "src", "" },
+            //{ "term", "" },
+            { "title", "Text" }
+            //{ "type", "" }
         };
 
         public Dictionary<string, Type> ElementToType { get; set; } = new Dictionary<string, Type>
@@ -91,17 +91,17 @@ namespace RssSyndicationFeed.Configuration
 
         public Dictionary<string, string> ElementValueToProperty { get; set; } = new Dictionary<string, string>
         {
-            { "email", "" },
+            //{ "email", "" },
             { "id", "Id" },
-            { "icon", "" },
+            //{ "icon", "" },
             { "logo", "Href" },
-            { "name", "" },
-            { "published", "" },
+            //{ "name", "" },
+            //{ "published", "" },
             { "rights", "Text" },
-            { "subtitle", "" },
+            //{ "subtitle", "" },
             { "summary", "Text" },
             { "title", "Text" },
-            { "updated", "" },
+            //{ "updated", "" },
             { "uri", "Href" }
         };
     }

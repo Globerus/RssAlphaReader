@@ -27,12 +27,9 @@ namespace RssSyndicationFeed.Controller
                 return model;
             }
 
-            var type = config.ElementToType
-                             .Where(e => e.Key == element.Name.LocalName)
-                             .Select(e => e.Value)
-                             .FirstOrDefault();
+            Type type;
 
-            if (type == null)
+            if (!config.ElementToType.TryGetValue(element.Name.LocalName, out type))
             {
                 return model;
             }
@@ -71,12 +68,9 @@ namespace RssSyndicationFeed.Controller
         {
             foreach (var attr in element.Attributes())
             {
-                var type = config.AttributeToType
-                                      .Where(e => e.Key == attr.Name.LocalName)
-                                      .Select(e => e.Value)
-                                      .FirstOrDefault();
+                Type type;
 
-                if (type == null)
+                if (!config.AttributeToType.TryGetValue(attr.Name.LocalName, out type))
                 {
                     continue;
                 }
@@ -92,11 +86,9 @@ namespace RssSyndicationFeed.Controller
 
         public T SetPropertyValue<T>(IDictionary<string, string> collection, string name, object value, T model) where T : class
         {
-            var propertyName = collection.Where(e => e.Key == name)
-                                         .Select(e => e.Value)
-                                         .FirstOrDefault();
+            string propertyName;
 
-            if (value.GetType() == typeof(string) && string.IsNullOrEmpty(propertyName))
+            if (!collection.TryGetValue(name, out propertyName) && value.GetType() == typeof(string))
             {
                 return value as T;
             }
@@ -144,7 +136,10 @@ namespace RssSyndicationFeed.Controller
 
             if (extension == null)
             {
-                extension = RssSyndicationExtensionManager.Create(element);
+                extension = Activator.CreateInstance(GlobalConstants.DependencyObjects["extension"]);
+
+                extension.Namespace = element.Name.NamespaceName;
+                extension.Name = element.GetPrefixOfNamespace(extension.Namespace);
 
                 extensionCollection.GetType()
                                    .GetMethod("Add")
@@ -152,13 +147,9 @@ namespace RssSyndicationFeed.Controller
 
                 property.SetValue(model, extensionCollection);
             }
+            Type formatter;
 
-            var formatter = GlobalConstants.SupportedFormatters
-                                           .Where(e => e.Key == extension.Name)
-                                           .Select(e => e.Value)
-                                           .FirstOrDefault();
-
-            if (formatter != null)
+            if (GlobalConstants.SupportedFormatters.TryGetValue(extension.Name, out formatter))
             {
                 var formatterObject = Activator.CreateInstance(formatter);
 
@@ -178,14 +169,12 @@ namespace RssSyndicationFeed.Controller
 
         public T DynamicExtensionElementLoad<T>(XElement element, T model) where T : class
         {
-            var type = config.ElementToType
-                             .Where(e => e.Key == element.Name.LocalName)
-                             .Select(e => e.Value)
-                             .FirstOrDefault();
+            Type type;
 
-            var newObject = (type == null) ? model
-                                           : (type == typeof(string)) ? string.Empty
-                                                                      : Activator.CreateInstance(type);
+            var typeAvailable = config.ElementToType.TryGetValue(element.Name.LocalName, out type);
+
+            var newObject = (!typeAvailable) ? model : (type == typeof(string)) ? string.Empty
+                                                                                : Activator.CreateInstance(type);
 
             if (!element.HasElements)
             {
@@ -209,7 +198,7 @@ namespace RssSyndicationFeed.Controller
                 newObject = DynamicExtensionElementLoad(subElement, newObject);
             }
 
-            model = (type == null) ? model : SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
+            model = (!typeAvailable) ? model : SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
 
             return model;
         }
