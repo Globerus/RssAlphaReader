@@ -64,20 +64,12 @@ namespace RssSyndicationFeed.Configuration
         public Dictionary<string, string> ElementValueToProperty { get; set; } = new Dictionary<string, string>
         {
             { "contributor", "Name" },
-            { "coverage", "" },
             { "creator", "Name" },
-            { "date", "" },
             { "description", "Text" },
-            { "format", "" },
             { "identifier", "Id" },
-            { "language", "" },
             { "publisher", "Name" },
-            { "relation", "" },
             { "rights", "Text" },
-            { "source", "" },
-            { "subject", "" },
-            { "title", "Text" },
-            { "type", "" }
+            { "title", "Text" }
         };
     }
 }

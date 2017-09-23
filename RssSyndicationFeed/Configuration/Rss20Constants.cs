@@ -29,11 +29,7 @@ namespace RssSyndicationFeed.Configuration
 
         public Dictionary<string, string> AttributeValueToProperty { get; set; } = new Dictionary<string, string>
         {
-            { "domain", "" },
-            { "length", "" },
-            { "type", "" },
-            { "url", "Href" },
-            { "isPermaLink", "" }
+            { "url", "Href" }
         };
 
         public Dictionary<string, Type> ElementToType { get; set; } = new Dictionary<string, Type>
@@ -95,20 +91,13 @@ namespace RssSyndicationFeed.Configuration
             { "comments", "Href" },
             { "copyright", "Text" },
             { "description", "Text" },
-            { "generator", "" },
             { "guid", "Id" },
-            { "height", "" },
-            { "language", "" },
-            { "lastBuildDate", "" },
             { "link", "Href" },
             { "managingEditor", "Email" },
-            { "pubDate", "" },
             { "source", "Text" },
             { "title", "Text" },
-            { "ttl", "" },
             { "url", "Href" },
-            { "webMaster", "Email" },
-            { "width", "" }
+            { "webMaster", "Email" }
         };
     }
 }

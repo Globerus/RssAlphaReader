@@ -1,4 +1,5 @@
 ﻿using RssSyndicationFeed.Controller;
+using RssSyndicationFeed.Model.SubContent;
 using System;
 using System.Collections.Generic;
 
@@ -24,6 +25,11 @@ namespace RssSyndicationFeed.Configuration
             { "atom", "LoadExtension" },
             { "dc", "LoadExtension" },
             { "media", "LoadExtension" }
+        };
+
+        public static Dictionary<string, Type> DependencyObjects { get; set; } = new Dictionary<string, Type>
+        {
+            { "extension", typeof(RssSyndicationExtension) }
         };
     }
 }
