@@ -2,9 +2,9 @@
 
 namespace RssAlphaReader.Model.SubContent
 {
-    public class RssSyndicationExtension
+    public class RssExtension
     {
-        public IContext Context { get; set; }
+        public IModel Model { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public string Namespace { get; set; }

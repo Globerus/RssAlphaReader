@@ -76,6 +76,10 @@
       <CustomToolNamespace>RssAlphaReader.Tests</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\RssSyndicationFeed.Tests.dll" />
+    <Content Include="bin\Debug\RssSyndicationFeed.Tests.pdb" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

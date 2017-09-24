@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace RssAlphaReader.Model.SubContent.Metadata.MediaRssContext
 {
-    public class MediaRssExtensionContext : IContext
+    public class MediaRssExtension : IModel
     {
-        public RssSyndicationCategory Category { get; set; }
+        public RssCategory Category { get; set; }
         public MediaRssCopyright Copyright { get; set; }
         public MediaRssCredit Credit { get; set; }
-        public RssSyndicationText Description { get; set; }
+        public RssText Description { get; set; }
         public List<MediaRssContent> Group { get; set; }
         public MediaRssHash Hash { get; set; }
         public string Keywords { get; set; }
@@ -17,6 +17,6 @@ namespace RssAlphaReader.Model.SubContent.Metadata.MediaRssContext
         public MediaRssRating Rating { get; set; }
         public MediaRssText Text { get; set; }
         public MediaRssThumbnails Thumbnails { get; set; }
-        public RssSyndicationText Title { get; set; }
+        public RssText Title { get; set; }
     }
 }

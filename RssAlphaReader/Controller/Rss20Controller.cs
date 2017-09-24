@@ -20,13 +20,9 @@ namespace RssAlphaReader.Controller
 
         }
 
-        public RssAlphaReaderContext Load(XDocument document)
+        public RssFeed Load(XDocument document, RssFeed model)
         {
-            var model = new RssAlphaReaderContext();
-
-            model = ProcessChildrenElements(document.Root.Element("channel"), model);
-
-            return model;
+            return ProcessChildrenElements(document.Root.Element("channel"), model);
         }
     }
 }

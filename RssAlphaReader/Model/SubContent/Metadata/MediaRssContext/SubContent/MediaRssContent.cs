@@ -15,7 +15,7 @@ namespace RssAlphaReader.Model.SubContent.Metadata.MediaRssContext.SubContent
         public string Medium { get; set; }
         public string Samplingrate { get; set; }
         public string Type { get; set; }
-        public RssSyndicationLink Url { get; set; }
+        public RssLink Url { get; set; }
         public string Width { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace RssAlphaReader.Configuration
             { "scheme", typeof(string) },
             { "src", typeof(string) },
             { "term", typeof(string) },
-            { "title", typeof(RssSyndicationText) },
+            { "title", typeof(RssText) },
             { "type", typeof(string) }
         };
 
@@ -41,23 +41,23 @@ namespace RssAlphaReader.Configuration
 
         public Dictionary<string, Type> ElementToType { get; set; } = new Dictionary<string, Type>
         {
-            { "author", typeof(RssSyndicationPerson) },
-            { "category", typeof(RssSyndicationCategory) },
-            { "contributor", typeof(RssSyndicationPerson) },
+            { "author", typeof(RssPerson) },
+            { "category", typeof(RssCategory) },
+            { "contributor", typeof(RssPerson) },
             { "email", typeof(string) },
-            { "entry", typeof(RssSyndicationItem) },
-            { "id", typeof(RssSyndicationGuid) },
+            { "entry", typeof(RssItem) },
+            { "id", typeof(RssGuid) },
             { "icon", typeof(string) },
-            { "link", typeof(RssSyndicationLink) },
-            { "logo", typeof(RssSyndicationLink) },
+            { "link", typeof(RssLink) },
+            { "logo", typeof(RssLink) },
             { "name", typeof(string) },
             { "published", typeof(string) },
-            { "rights", typeof(RssSyndicationText) },
+            { "rights", typeof(RssText) },
             { "subtitle", typeof(string) },
-            { "summary", typeof(RssSyndicationText) },
-            { "title", typeof(RssSyndicationText) },
+            { "summary", typeof(RssText) },
+            { "title", typeof(RssText) },
             { "updated", typeof(string) },
-            { "uri", typeof(RssSyndicationLink) }
+            { "uri", typeof(RssLink) }
         };
 
         public Dictionary<string, string> ElementToProperty { get; set; } = new Dictionary<string, string>

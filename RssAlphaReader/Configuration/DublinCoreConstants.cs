@@ -25,20 +25,20 @@ namespace RssAlphaReader.Configuration
 
         public Dictionary<string, Type> ElementToType { get; set; } = new Dictionary<string, Type>
         {
-            { "contributor", typeof(RssSyndicationPerson) },
+            { "contributor", typeof(RssPerson) },
             { "coverage", typeof(string) },
-            { "creator", typeof(RssSyndicationPerson) },
+            { "creator", typeof(RssPerson) },
             { "date", typeof(string) },
-            { "description", typeof(RssSyndicationText) },
+            { "description", typeof(RssText) },
             { "format", typeof(string) },
-            { "identifier", typeof(RssSyndicationGuid) },
+            { "identifier", typeof(RssGuid) },
             { "language", typeof(string) },
-            { "publisher", typeof(RssSyndicationPerson) },
+            { "publisher", typeof(RssPerson) },
             { "relation", typeof(string) },
-            { "rights", typeof(RssSyndicationText) },
+            { "rights", typeof(RssText) },
             { "source", typeof(string) },
             { "subject", typeof(string) },
-            { "title", typeof(RssSyndicationText) },
+            { "title", typeof(RssText) },
             { "type", typeof(string) }
         };
 
