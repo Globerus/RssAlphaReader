@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BNT" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"&gt;
+  &lt;channel&gt;
+    &lt;atom:link href="http://news.bnt.bg/bg/rss/news.xml" rel="self" type="application/rss+xml" /&gt;
+    &lt;title&gt;БНТ Новини&lt;/title&gt;
+    &lt;link&gt;http://news.bnt.bg/&lt;/link&gt;
+    &lt;description&gt;Новини от Българска национална телевизия&lt;/description&gt;
+    &lt;language&gt;bg&lt;/language&gt;
+    &lt;lastBuildDate&gt;Sat, 16 Sep 2017 16:25:05 +0300&lt;/lastBuildDate&gt;
+    &lt;item&gt;
+      &lt;title&gt;Откриха бюстове и картини на Хитлер в парламента на Австрия&lt;/title&gt;
+      &lt;link&gt;http://news.bnt.bg/bg/a/otkrikha-byustove-i-kartini-na-khitler-v-parlamenta-na-avstriya&lt;/link&gt;
+      &lt;description&gt;По време на ремонт на австрийския парламент строители откриха в едно от мазетата картини, два бюста и барелеф на Адолф Хитлер.&lt;/description&gt;
+      &lt;category&gt;По света / Общество&lt;/category&gt;
+      &lt;guid isPermaLink="true"&gt;http://news.bnt.bg/bg/a/otkrikha-byustove-i-kartini-na-khitler-v-parlamenta-na-avstriya&lt;/guid&gt;
+      &lt;pubDate&gt;Sat, 16 Sep 2017 15:50:11 +0300&lt;/pubDate&gt;
+      &lt;enclosure url="http://nws2.bnt.bg/p/r/e/red-svqt-236867-360x202.jpg" type="image/jpeg" length="11245"/&gt;
+    &lt;/item&gt;
+ &lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>http://news.bnt.bg/bg/rss/news.xml</comment>
+  </data>
+  <data name="CapitalBG" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss version="2.0"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;Капитал - България&lt;/title&gt;
+    &lt;link&gt;http://www.capital.bg/rss/?rubrid=2249&lt;/link&gt;
+    &lt;description&gt;&lt;/description&gt;
+    &lt;language&gt;bg&lt;/language&gt;
+    &lt;image&gt;
+      &lt;url&gt;http://www.capital.bg/i/6/capital-rss.gif&lt;/url&gt;
+      &lt;urlITunes&gt;http://www.capital.bg/i/capital_logo.png&lt;/urlITunes&gt;
+      &lt;title&gt;Capital.bg&lt;/title&gt;
+      &lt;link&gt;http://www.capital.bg&lt;/link&gt;
+      &lt;width&gt;144&lt;/width&gt;
+      &lt;height&gt;26&lt;/height&gt;
+    &lt;/image&gt;
+    &lt;generator&gt;CRSS generator&lt;/generator&gt;
+    &lt;webMaster&gt;online@capital.bg&lt;/webMaster&gt;
+    &lt;item&gt;
+      &lt;title&gt;Президентът: Новият съдебен съвет трябва да избере председателя на Върховния административен съд&lt;/title&gt;
+      &lt;link&gt;http://www.capital.bg/politika_i_ikonomika/bulgaria/2017/09/16/3043059_prezidentut_noviiat_sudeben_suvet_triabva_da_izbere/?ref=rss&lt;/link&gt;
+      &lt;description&gt;&amp;amp;lt;img src="http://www.capital.bg/shimg/zx350_3003501.jpg" alt="" /&amp;amp;gt;&amp;amp;lt;br /&amp;amp;gt;Президентът Румен Радев даде знак, че няма да подпише указа за назначаване на Георги Чолаков за председател на Върховния административен съд (ВАС), но и че ще даде шанс на новия Висш съдебен съвет (ВСС) да реши този избор окончателно. В този смисъл прозвуча изявлението му пред журналисти в събота в Борисовата градина, където президентът участва в инициативата "Да изчистим България".&amp;amp;lt;br /&amp;amp;gt;&amp;amp;lt;br /&amp;amp;gt;На въпрос ще подпише ли указа за назначаването на Чолаков, президентът Радев заяви: "Казах, че...&lt;/description&gt;
+      &lt;guid isPermaLink="false"&gt;3043059&lt;/guid&gt;
+      &lt;author&gt;Мирела Веселинова&lt;/author&gt;
+      &lt;comments&gt;http://www.capital.bg/politika_i_ikonomika/bulgaria/2017/09/16/3043059_prezidentut_noviiat_sudeben_suvet_triabva_da_izbere/?ref=rss#comments&lt;/comments&gt;
+      &lt;pubDate&gt;Sat, 16 Sep 2017 14:25:00 +0300&lt;/pubDate&gt;
+    &lt;/item&gt;
+&lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>http://www.capital.bg/rss/?rubrid=2249</comment>
+  </data>
+  <data name="CNNWorld" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?&gt;
+&lt;?xml-stylesheet type="text/css" media="screen" href="http://rss.cnn.com/~d/styles/itemcontent.css"?&gt;
+&lt;rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"&gt;
+   &lt;channel&gt;
+      &lt;title&gt;&lt;![CDATA[CNN.com - RSS Channel - World]]&gt;&lt;/title&gt;
+      &lt;description&gt;&lt;![CDATA[CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.]]&gt;&lt;/description&gt;
+      &lt;link&gt;http://www.cnn.com/world/index.html&lt;/link&gt;
+      &lt;image&gt;
+         &lt;url&gt;http://i2.cdn.turner.com/cnn/2015/images/09/24/cnn.digital.png&lt;/url&gt;
+         &lt;title&gt;CNN.com - RSS Channel - World&lt;/title&gt;
+         &lt;link&gt;http://www.cnn.com/world/index.html&lt;/link&gt;
+      &lt;/image&gt;
+      &lt;generator&gt;coredev-bumblebee&lt;/generator&gt;
+      &lt;lastBuildDate&gt;Sat, 16 Sep 2017 13:30:27 GMT&lt;/lastBuildDate&gt;
+      &lt;pubDate&gt;Fri, 15 Sep 2017 18:30:53 GMT&lt;/pubDate&gt;
+      &lt;copyright&gt;&lt;![CDATA[Copyright (c) 2017 Turner Broadcasting System, Inc. All Rights Reserved.]]&gt;&lt;/copyright&gt;
+      &lt;language&gt;&lt;![CDATA[en-US]]&gt;&lt;/language&gt;
+      &lt;ttl&gt;10&lt;/ttl&gt;
+      &lt;atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://rss.cnn.com/rss/edition_world" /&gt;
+      &lt;feedburner:info uri="rss/edition_world" /&gt;
+      &lt;atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /&gt;
+      &lt;item&gt;
+         &lt;title&gt;&lt;![CDATA[The London train explosion is the latest of 5 UK terror incidents in 2017]]&gt;&lt;/title&gt;
+         &lt;description&gt;The blast of an improvised bomb Friday on a London Underground train brings the number of terror incidents in the United Kingdom this year to at least five.&amp;amp;lt;img src="http://feeds.feedburner.com/~r/rss/edition_world/~4/0S06SlaKItI" height="1" width="1" alt=""/&amp;amp;gt;&lt;/description&gt;
+         &lt;link&gt;http://rss.cnn.com/~r/rss/edition_world/~3/0S06SlaKItI/index.html&lt;/link&gt;
+         &lt;guid isPermaLink="false"&gt;http://www.cnn.com/2017/09/15/world/uk-terror-events-2017/index.html&lt;/guid&gt;
+         &lt;pubDate&gt;Fri, 15 Sep 2017 17:11:44 GMT&lt;/pubDate&gt;
+         &lt;media:group&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-super-169.jpg" height="619" width="1100" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-large-11.jpg" height="300" width="300" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-vertical-large-gallery.jpg" height="552" width="414" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-video-synd-2.jpg" height="480" width="640" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-live-video.jpg" height="324" width="576" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-t1-main.jpg" height="250" width="250" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-vertical-gallery.jpg" height="360" width="270" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-story-body.jpg" height="169" width="300" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-t1-main.jpg" height="250" width="250" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-assign.jpg" height="186" width="248" /&gt;
+            &lt;media:content medium="image" url="http://i2.cdn.turner.com/cnnnext/dam/assets/170915073710-19-london-train-incident-0915-hp-video.jpg" height="144" width="256" /&gt;
+         &lt;/media:group&gt;
+         &lt;feedburner:origLink&gt;http://www.cnn.com/2017/09/15/world/uk-terror-events-2017/index.html&lt;/feedburner:origLink&gt;
+      &lt;/item&gt;
+   &lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>http://rss.cnn.com/rss/edition_world.rss</comment>
+  </data>
+  <data name="DnesBG" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt; 
+&lt;rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;DNES.BG: България&lt;/title&gt;
+    &lt;link&gt;http://www.dnes.bg/&lt;/link&gt;
+    &lt;description /&gt;
+    &lt;language&gt;bg&lt;/language&gt;
+    &lt;image&gt;
+      &lt;url&gt;http://85.14.28.164/d/images/rss_logo.png&lt;/url&gt;
+      &lt;title&gt;DNES.BG&lt;/title&gt;
+      &lt;link&gt;http://www.dnes.bg&lt;/link&gt;
+    &lt;/image&gt;
+    &lt;item&gt;
+      &lt;title&gt;Радев недоволен: Лобисти върнаха в началото конкурса за изтребителя&lt;/title&gt;
+      &lt;link&gt;http://www.dnes.bg/politika/2017/09/16/radev-nedovolen-lobisti-vyrnaha-v-nachaloto-konkursa-za-iztrebitelia.353471&lt;/link&gt;
+      &lt;description&gt;Това застрашава да приземи окончателно авиацията ни, смята президентът&lt;/description&gt;
+      &lt;dc:date&gt;2017-09-16T13:27:00+03:00&lt;/dc:date&gt;
+      &lt;guid isPermaLink = "false"&gt;http://www.dnes.bg/politika/2017/09/16/radev-nedovolen-lobisti-vyrnaha-v-nachaloto-konkursa-za-iztrebitelia.353471&lt;/guid&gt;
+      &lt;enclosure url = "http://85.14.28.164/d/images/photos/0353/0000353471-top2.jpg" type = "image/jpeg" /&gt;
+    &lt;/item&gt;
+  &lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>http://www.dnes.bg/rss.php/?cat=1</comment>
+  </data>
+  <data name="SportalBG" xml:space="preserve">
+    <value>&lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"&gt;
+&lt;channel&gt;
+	&lt;title&gt;sportal.bg&lt;/title&gt;
+	&lt;link&gt;http://www.sportal.bg/&lt;/link&gt;
+	&lt;description&gt;Sportal BG&lt;/description&gt;
+	&lt;language&gt;bg&lt;/language&gt;
+	&lt;atom:link href="http://www.sportal.bg/uploads/rss_category_0.xml" rel="self" type="application/rss+xml" /&gt;
+	&lt;item&gt;
+		&lt;category&gt;БГ Футбол&lt;/category&gt;
+		&lt;title&gt;&lt;![CDATA[Венци Стефанов избухна: Един човек атакува съдиите - Краля слънце (видео)]]&gt;&lt;/title&gt;
+		&lt;link&gt;http://www.sportal.bg/news.php?news=685580&lt;/link&gt;
+		&lt;description&gt;&lt;![CDATA[&lt;img src="https://img2.sportal.bg/uploads/news/2017_38/thumb_mid/00685580.jpg" alt="news picture" /&gt;&lt;br /&gt;Президентът на Славия Венцеслав Стефанов атакува остро собственика на Лудогорец Кирил Домусмиев, като обяви, че съдиите грешат заради негов натиск. "Днес ...]]&gt;&lt;/description&gt;
+		&lt;enclosure url="https://img2.sportal.bg/uploads/news/2017_38/thumb_mid/00685580.jpg" type="image/jpeg" length="37435"/&gt;
+		&lt;pubDate&gt;Sat, 23 Sep 2017 18:56:00 +0300&lt;/pubDate&gt;
+		&lt;guid isPermaLink="false"&gt;afa8b451e5dbf72ac28d8a845ae1b47f&lt;/guid&gt;
+	&lt;/item&gt;
+&lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>https://www.sportal.bg/uploads/rss_category_0.xml</comment>
+  </data>
+  <data name="TheRegister" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"&gt;
+  &lt;id&gt;tag:theregister.co.uk,2005:feed/theregister.co.uk/software/&lt;/id&gt;
+  &lt;title&gt;The Register - Software&lt;/title&gt;
+  &lt;link rel="self" type="application/atom+xml" href="https://www.theregister.co.uk/software/headlines.atom"/&gt;
+  &lt;link rel="alternate" type="text/html" href="https://www.theregister.co.uk/software/"/&gt;
+  &lt;rights&gt;Copyright В© 2017, Situation Publishing&lt;/rights&gt;
+  &lt;author&gt;
+    &lt;name&gt;Team Register&lt;/name&gt;
+    &lt;email&gt;webmaster@theregister.co.uk&lt;/email&gt;
+    &lt;uri&gt;https://www.theregister.co.uk/odds/about/contact/&lt;/uri&gt;
+  &lt;/author&gt;
+  &lt;icon&gt;https://www.theregister.co.uk/Design/graphics/icons/favicon.png&lt;/icon&gt;
+  &lt;subtitle&gt;Biting the hand that feeds IT вЂ” sci/tech news and views for the world&lt;/subtitle&gt;
+  &lt;logo&gt;https://www.theregister.co.uk/Design/graphics/Reg_default/The_Register_r.png&lt;/logo&gt;
+  &lt;updated&gt;2017-09-15T20:16:04Z&lt;/updated&gt;
+  &lt;entry&gt;
+    &lt;id&gt;tag:theregister.co.uk,2005:story/2017/09/15/chrome_will_kill_autoplaying_video_sounds/&lt;/id&gt;
+    &lt;updated&gt;2017-09-15T20:17:08Z&lt;/updated&gt;
+    &lt;author&gt;
+      &lt;name&gt;Iain Thomson&lt;/name&gt;
+      &lt;uri&gt;https://search.theregister.co.uk/?author=Iain%20Thomson&lt;/uri&gt;
+    &lt;/author&gt;
+    &lt;link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2017/09/15/chrome_will_kill_autoplaying_video_sounds/"/&gt;
+    &lt;title type="html"&gt;Google to kill Chrome autoplay madness&lt;/title&gt;
+    &lt;summary type="html" xml:base="http://www.theregister.co.uk/"&gt;&amp;amp;lt;h4&amp;amp;gt;Sorta, kinda, well not really&amp;amp;lt;/h4&amp;amp;gt; &amp;amp;lt;p&amp;amp;gt;Google has promised to end the infuriating autoplay of videos in its Chrome browser вЂ“ but with a heap of exceptions that may actually make the problem worse.вЂ¦&amp;amp;lt;/p&amp;amp;gt;&lt;/summary&gt;
+  &lt;/entry&gt;
+&lt;/feed&gt;</value>
+    <comment>https://www.theregister.co.uk/software/headlines.atom</comment>
+  </data>
+  <data name="TrafficNewsBG" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss version="2.0"&gt;
+   &lt;channel&gt;
+      &lt;title&gt;Trafficnews.bg&lt;/title&gt;
+      &lt;link&gt;https://trafficnews.bg/&lt;/link&gt;
+      &lt;description&gt;Категория България&lt;/description&gt;
+      &lt;language&gt;bg-bg&lt;/language&gt;
+      &lt;copyright&gt;Copyright (C) 2017 Trafficnews.bg&lt;/copyright&gt;
+      &lt;item&gt;
+         &lt;title&gt;&lt;![CDATA[Болен мъж живее месеци наред на улицата в Смолян, социалните вдигат ръце СНИМКИ]]&gt;&lt;/title&gt;
+         &lt;description&gt;&lt;![CDATA[Той е бил девет пъти в затвора]]&gt;&lt;/description&gt;
+         &lt;category&gt;България&lt;/category&gt;
+         &lt;guid&gt;https://trafficnews.bg/bulgaria/news/84428/&lt;/guid&gt;
+         &lt;link&gt;https://trafficnews.bg/bulgaria/news/84428/&lt;/link&gt;
+         &lt;enclosure url="https://cdn2.trafficnews.bg/2017/09/14/1505390716_991-ratio-bezdomnik-smolian.jpg" type="image/jpg" /&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+         &lt;title&gt;&lt;![CDATA[Не яжте яйца с партидни номера 3BG04001, 1BG04001, 3BG04003! Заразени са]]&gt;&lt;/title&gt;
+         &lt;description&gt;&lt;![CDATA[Съдържат фипронил, установиха проверки на Българската агенция по безопасност на храните]]&gt;&lt;/description&gt;
+         &lt;category&gt;България&lt;/category&gt;
+         &lt;guid&gt;https://trafficnews.bg/bulgaria/news/84446/&lt;/guid&gt;
+         &lt;link&gt;https://trafficnews.bg/bulgaria/news/84446/&lt;/link&gt;
+         &lt;enclosure url="https://cdn2.trafficnews.bg/2017/09/14/1505399377_469.jpg" type="image/jpg" /&gt;
+      &lt;/item&gt;
+   &lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>https://trafficnews.bg/rss/category/bulgaria/</comment>
+  </data>
+  <data name="VestiBG" xml:space="preserve">
+    <value>&lt;rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"&gt;
+&lt;channel&gt;
+&lt;atom:link href="https://www.vesti.bg/rss" rel="self" type="application/rss+xml"/&gt;
+&lt;title&gt;VESTI.bg&lt;/title&gt;
+&lt;description&gt;Български и световни новини от бизнеса и политиката. Наука, технологии и медии. Инциденти и произшествия, съдебна система. Любопитно за звездите.&lt;/description&gt;
+&lt;link&gt;http://www.vesti.bg/&lt;/link&gt;
+&lt;item&gt;
+&lt;title&gt;&lt;![CDATA[През 2018 г. учени ще търсят контакт с извънземни]]&gt;&lt;/title&gt;
+&lt;link&gt;https://www.vesti.bg/tehnologii/nauka-i-tehnika/prez-2018-g.-ucheni-shte-tyrsiat-kontakt-s-izvynzemni-6073768&lt;/link&gt;
+&lt;description&gt;&lt;![CDATA[Следващата година започва нов проект за изпращане на сигнали в Космоса, който среща сериозна опозиция]]&gt;&lt;/description&gt;
+&lt;category&gt;Наука и техника&lt;/category&gt;
+&lt;categoryurl&gt;https://www.vesti.bg/tehnologii/nauka-i-tehnika&lt;/categoryurl&gt;
+&lt;views&gt;973&lt;/views&gt;
+&lt;commentsNum&gt;6&lt;/commentsNum&gt;
+&lt;author&gt;news@netinfo.bg (Vesti.bg)&lt;/author&gt;
+&lt;guid isPermaLink="true"&gt;https://www.vesti.bg/tehnologii/nauka-i-tehnika/prez-2018-g.-ucheni-shte-tyrsiat-kontakt-s-izvynzemni-6073768&lt;/guid&gt;
+&lt;enclosure url="https://m.netinfo.bg/media/images/30758/30758750/201-140-kosmos-kosmonavt-mars.jpg" type="image/jpg" length="13413"/&gt;
+&lt;pubDate&gt;Sat, 16 Sep 2017 15:42:00 +0300&lt;/pubDate&gt;
+&lt;/item&gt;
+&lt;/channel&gt;
+&lt;/rss&gt;</value>
+    <comment>http://www.vesti.bg/rss.php</comment>
+  </data>
+</root>
