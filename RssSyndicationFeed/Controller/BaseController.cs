@@ -29,7 +29,7 @@ namespace RssSyndicationFeed.Controller
 
             Type type;
 
-            if (!config.ElementToType.TryGetValue(element.Name.LocalName, out type))
+            if(!config.ElementToType.TryGetValue(element.Name.LocalName, out type))
             {
                 return model;
             }
@@ -49,19 +49,18 @@ namespace RssSyndicationFeed.Controller
                 }
 
                 model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
-
-                return model;
             }
-
-            foreach (var subElement in element.Elements())
+            else
             {
-                newObject = DynamicElementLoad(subElement, newObject);
-            }
+                foreach (var subElement in element.Elements())
+                {
+                    newObject = DynamicElementLoad(subElement, newObject);
+                }
 
-            model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
+                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
+            }
 
             return model;
-
         }
 
         public T DynamicAttributeLoad<T>(XElement element, T model) where T : class
@@ -136,7 +135,8 @@ namespace RssSyndicationFeed.Controller
 
             if (extension == null)
             {
-                extension = Activator.CreateInstance(GlobalConstants.DependencyObjects["extension"]);
+                Type extensionType = property.PropertyType.GetGenericArguments()[0];
+                extension = Activator.CreateInstance(extensionType);
 
                 extension.Namespace = element.Name.NamespaceName;
                 extension.Name = element.GetPrefixOfNamespace(extension.Namespace);

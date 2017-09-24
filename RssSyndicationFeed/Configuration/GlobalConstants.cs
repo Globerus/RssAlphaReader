@@ -26,10 +26,5 @@ namespace RssSyndicationFeed.Configuration
             { "dc", "LoadExtension" },
             { "media", "LoadExtension" }
         };
-
-        public static Dictionary<string, Type> DependencyObjects { get; set; } = new Dictionary<string, Type>
-        {
-            { "extension", typeof(RssSyndicationExtension) }
-        };
     }
 }
