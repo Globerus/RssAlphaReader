@@ -19,14 +19,25 @@ namespace RssSyndicationFeed.Controller
             this.config = config;
         }
 
-        public T DynamicElementLoad<T>(XElement element, T model) where T : class
+        public T ProcessChildrenElements<T>(XElement element, T model) where T : class
         {
-            if (element.Name.NamespaceName != element.GetDefaultNamespace())
+            foreach (var child in element.Elements())
             {
-                model = DynamicExtensionLoad(element, model);
-                return model;
+                if (child.Name.NamespaceName == child.GetDefaultNamespace())
+                {
+                    model = ProcessElement(child, model);
+                }
+                else
+                {
+                    model = ProcessExtension(child, model);
+                }
             }
 
+            return model;
+        }
+
+        public T ProcessElement<T>(XElement element, T model) where T : class
+        {
             Type type;
 
             if(!config.ElementToType.TryGetValue(element.Name.LocalName, out type))
@@ -34,36 +45,33 @@ namespace RssSyndicationFeed.Controller
                 return model;
             }
 
-            var newObject = (type == typeof(string)) ? string.Empty : Activator.CreateInstance(type);
+            var elementObject = (type == typeof(string)) ? string.Empty : Activator.CreateInstance(type);
 
             if (!element.HasElements)
             {
                 if (element.HasAttributes)
                 {
-                    newObject = DynamicAttributeLoad(element, newObject);
+                    elementObject = ProcessAttributes(element, elementObject);
                 }
 
                 if (!element.IsEmpty)
                 {
-                    newObject = SetPropertyValue(config.ElementValueToProperty, element.Name.LocalName, element.Value, newObject);
+                    elementObject = SetPropertyValue(config.ElementValueToProperty, element.Name.LocalName, element.Value, elementObject);
                 }
 
-                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
+                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, elementObject, model);
             }
             else
             {
-                foreach (var subElement in element.Elements())
-                {
-                    newObject = DynamicElementLoad(subElement, newObject);
-                }
+                elementObject = ProcessChildrenElements(element, elementObject);
 
-                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
+                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, elementObject, model);
             }
 
             return model;
         }
 
-        public T DynamicAttributeLoad<T>(XElement element, T model) where T : class
+        public T ProcessAttributes<T>(XElement element, T model) where T : class
         {
             foreach (var attr in element.Attributes())
             {
@@ -78,6 +86,95 @@ namespace RssSyndicationFeed.Controller
 
                 newObject = SetPropertyValue(config.AttributeValueToProperty, attr.Name.LocalName, attr.Value, newObject);
                 model = SetPropertyValue(config.AttributeToProperty, attr.Name.LocalName, newObject, model);
+            }
+
+            return model;
+        }
+
+        public T ProcessExtension<T>(XElement element, T model)
+        {
+            var property = model.GetType()
+                                .GetProperty("Extensions");
+
+            if (property == null)
+            {
+                return model;
+            }
+
+            var extensionCollection = property.GetValue(model);
+
+            extensionCollection = (extensionCollection == null) ? Activator.CreateInstance(property.PropertyType) : extensionCollection;
+
+            var extension = ((IEnumerable)extensionCollection).Cast<dynamic>()
+                                                              .Where(e => e.Namespace == element.Name.NamespaceName)
+                                                              .FirstOrDefault();
+
+            if (extension == null)
+            {
+                Type extensionType = property.PropertyType.GetGenericArguments()[0];
+                extension = Activator.CreateInstance(extensionType);
+
+                extension.Namespace = element.Name.NamespaceName;
+                extension.Name = element.GetPrefixOfNamespace(extension.Namespace);
+
+                extensionCollection.GetType()
+                                   .GetMethod("Add")
+                                   .Invoke(extensionCollection, new[] { extension });
+
+                property.SetValue(model, extensionCollection);
+            }
+
+            Type formatter;
+
+            if (GlobalConstants.SupportedFormatters.TryGetValue(extension.Name, out formatter))
+            {
+                var formatterObject = Activator.CreateInstance(formatter);
+
+                var bootstrapper = GlobalConstants.BootstrapMethods
+                                                  .Where(e => e.Key == extension.Name)
+                                                  .Select(e => e.Value)
+                                                  .FirstOrDefault();
+
+                formatter.GetMethod(bootstrapper)
+                         .Invoke(formatterObject, new object[] { extension, element });
+            }
+
+            extension.Description = element.ToString();
+
+            return model;
+        }
+
+        public T ProcessExtensionElement<T>(XElement element, T model) where T : class
+        {
+            Type type;
+
+            var typeAvailable = config.ElementToType.TryGetValue(element.Name.LocalName, out type);
+
+            var newObject = (!typeAvailable) ? model : (type == typeof(string)) ? string.Empty
+                                                                                : Activator.CreateInstance(type);
+
+            if (!element.HasElements)
+            {
+                if (element.HasAttributes)
+                {
+                    newObject = ProcessAttributes(element, newObject);
+                }
+
+                if (!element.IsEmpty)
+                {
+                    newObject = SetPropertyValue(config.ElementValueToProperty, element.Name.LocalName, element.Value, newObject);
+                }
+
+                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
+            }
+            else
+            {
+                foreach (var subElement in element.Elements())
+                {
+                    newObject = ProcessExtensionElement(subElement, newObject);
+                }
+
+                model = (!typeAvailable) ? model : SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
             }
 
             return model;
@@ -110,111 +207,6 @@ namespace RssSyndicationFeed.Controller
             else
             {
                 property.SetValue(model, value);
-            }
-
-            return model;
-        }
-
-        public T DynamicExtensionLoad<T>(XElement element, T model)
-        {
-            var property = model.GetType()
-                                .GetProperty("Extensions");
-
-            if(property == null)
-            {
-                return model;
-            }
-
-            var extensionCollection = property.GetValue(model);
-
-            extensionCollection = (extensionCollection == null) ? Activator.CreateInstance(property.PropertyType) : extensionCollection;
-
-            var extension = ((IEnumerable)extensionCollection).Cast<dynamic>()
-                                                              .Where(e => e.Namespace == element.Name.NamespaceName)
-                                                              .FirstOrDefault();
-
-            if (extension == null)
-            {
-                Type extensionType = property.PropertyType.GetGenericArguments()[0];
-                extension = Activator.CreateInstance(extensionType);
-
-                extension.Namespace = element.Name.NamespaceName;
-                extension.Name = element.GetPrefixOfNamespace(extension.Namespace);
-
-                extensionCollection.GetType()
-                                   .GetMethod("Add")
-                                   .Invoke(extensionCollection, new[] { extension });
-
-                property.SetValue(model, extensionCollection);
-            }
-            Type formatter;
-
-            if (GlobalConstants.SupportedFormatters.TryGetValue(extension.Name, out formatter))
-            {
-                var formatterObject = Activator.CreateInstance(formatter);
-
-                var bootstrapper = GlobalConstants.BootstrapMethods
-                                                  .Where(e => e.Key == extension.Name)
-                                                  .Select(e => e.Value)
-                                                  .FirstOrDefault();
-
-                formatter.GetMethod(bootstrapper)
-                         .Invoke(formatterObject, new object[] { extension, element });
-            }
-
-            extension.Description = element.ToString();
-
-            return model;
-        }
-
-        public T DynamicExtensionElementLoad<T>(XElement element, T model) where T : class
-        {
-            Type type;
-
-            var typeAvailable = config.ElementToType.TryGetValue(element.Name.LocalName, out type);
-
-            var newObject = (!typeAvailable) ? model : (type == typeof(string)) ? string.Empty
-                                                                                : Activator.CreateInstance(type);
-
-            if (!element.HasElements)
-            {
-                if (element.HasAttributes)
-                {
-                    newObject = DynamicAttributeLoad(element, newObject);
-                }
-
-                if (!element.IsEmpty)
-                {
-                    newObject = SetPropertyValue(config.ElementValueToProperty, element.Name.LocalName, element.Value, newObject);
-                }
-
-                model = SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
-
-                return model;
-            }
-
-            foreach (var subElement in element.Elements())
-            {
-                newObject = DynamicExtensionElementLoad(subElement, newObject);
-            }
-
-            model = (!typeAvailable) ? model : SetPropertyValue(config.ElementToProperty, element.Name.LocalName, newObject, model);
-
-            return model;
-        }
-
-        public T StartLoading<T>(XElement root, T model) where T : class
-        {
-            foreach (var element in root.Elements())
-            {
-                if (element.Name.NamespaceName == element.GetDefaultNamespace())
-                {
-                    model = DynamicElementLoad(element, model);
-                }
-                else
-                {
-                    model = DynamicExtensionLoad(element, model);
-                }
             }
 
             return model;

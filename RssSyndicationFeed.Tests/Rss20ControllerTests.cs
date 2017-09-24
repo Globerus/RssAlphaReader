@@ -23,7 +23,7 @@ namespace RssSyndicationFeed.Tests
             string xml = "<author>Мирела Веселинова</author>";
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Мирела Веселинова", rss.Author.Email);
         }
@@ -39,7 +39,7 @@ namespace RssSyndicationFeed.Tests
             var document = GenerateDocumentFromXML(xml);
             //var description = rss20Controller.ProcessDescription(document);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
             //Assert.AreEqual("html", description.Type);
             //Assert.AreEqual(decodedLink, description.Description);
             Assert.AreEqual("Hello, World Description", rss.Description.Text);
@@ -52,7 +52,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("http://www.fool.com/cusips", rss.Category.Scheme);
             Assert.AreEqual("MSFT", rss.Category.Label);
@@ -65,7 +65,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("MightyInHouse Content System v2.3", rss.Generator);
         }
@@ -77,7 +77,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("true", rss.Guid.IsPermaLink);
             Assert.AreEqual("http://inessential.com/2002/09/01.php#a2", rss.Guid.Id);
@@ -97,7 +97,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Dnes.BG", rss.Image.Description.Text);
             Assert.AreEqual("400", rss.Image.Height);
@@ -114,7 +114,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var image = new RssSyndicationImage();
-            image = rss20Controller.DynamicElementLoad(document, image);
+            image = rss20Controller.ProcessElement(document, image);
 
             Assert.AreEqual("400", image.Height);
         }
@@ -126,7 +126,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Sat, 16 Sep 2017 14:37:46 GMT", rss.LastBuildDate);
         }
@@ -138,7 +138,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("http://www.cnn.com/app-international-edition/index.html", rss.Link.FirstOrDefault()?.Href);
         }
@@ -150,7 +150,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("geo@herald.com (George Matesky)", rss.ManagingEditor.Email);
         }
@@ -162,7 +162,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Sat, 07 Sep 2002 00:00:01 GMT", rss.PubDate);
         }
@@ -174,7 +174,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Hello, World", rss.Title.Text);
         }
@@ -186,7 +186,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var item = new RssSyndicationItem();
-            item = rss20Controller.DynamicElementLoad(document, item);
+            item = rss20Controller.ProcessElement(document, item);
 
             Assert.AreEqual("www.yahoo.com", item.Comments.Href);
         }
@@ -198,7 +198,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var item = new RssSyndicationItem();
-            item = rss20Controller.DynamicElementLoad(document, item);
+            item = rss20Controller.ProcessElement(document, item);
 
             Assert.AreEqual("http://www.scripting.com/mp3s/weatherReportSuite.mp3", item.Enclosure.Url.Href);
             Assert.AreEqual("audio/mpeg", item.Enclosure.Type);
@@ -212,7 +212,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var item = new RssSyndicationItem();
-            item = rss20Controller.DynamicElementLoad(document, item);
+            item = rss20Controller.ProcessElement(document, item);
 
             Assert.AreEqual("Tomalak's Realm", item.Source.Text);
             Assert.AreEqual("http://www.tomalak.org/links2.xml", item.Source.Url.Href);
@@ -225,7 +225,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var image = new RssSyndicationImage();
-            image = rss20Controller.DynamicElementLoad(document, image);
+            image = rss20Controller.ProcessElement(document, image);
 
             Assert.AreEqual("222", image.Width);
         }
@@ -237,7 +237,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Copyright 2002, Spartanburg Herald-Journal", rss.Copyright.Text);
         }
@@ -273,7 +273,7 @@ namespace RssSyndicationFeed.Tests
 
             var document = GenerateDocumentFromXML(xml);
             var rss = new RssSyndicationFeedContext();
-            rss = rss20Controller.DynamicElementLoad(document, rss);
+            rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Hello, World", rss.Items.FirstOrDefault()?.Title.Text);
             Assert.AreEqual("http://www.cnn.com/app-international-edition/index.html", rss.Items.FirstOrDefault()?.Link.FirstOrDefault()?.Href);

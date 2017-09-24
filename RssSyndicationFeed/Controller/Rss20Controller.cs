@@ -24,7 +24,7 @@ namespace RssSyndicationFeed.Controller
         {
             var model = new RssSyndicationFeedContext();
 
-            model = StartLoading(document.Root.Element("channel"), model);
+            model = ProcessChildrenElements(document.Root.Element("channel"), model);
 
             return model;
         }

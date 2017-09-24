@@ -22,7 +22,7 @@ namespace RssSyndicationFeed.Controller
                 extension.Context = new MediaRssExtensionContext();
             }
 
-            extension.Context = DynamicExtensionElementLoad(element, extension.Context);
+            extension.Context = ProcessExtensionElement(element, extension.Context);
         }
     }
 }

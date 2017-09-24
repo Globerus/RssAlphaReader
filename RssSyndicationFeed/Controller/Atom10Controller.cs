@@ -18,7 +18,7 @@ namespace RssSyndicationFeed.Controller
         {
             var model = new RssSyndicationFeedContext();
 
-            model = StartLoading(document.Root, model);
+            model = ProcessChildrenElements(document.Root, model);
 
             return model;
         }
@@ -30,7 +30,7 @@ namespace RssSyndicationFeed.Controller
                 extension.Context = new RssSyndicationFeedContext();
             }
 
-            extension.Context = DynamicExtensionElementLoad(element, extension.Context);
+            extension.Context = ProcessExtensionElement(element, extension.Context);
         }
     }
 }
