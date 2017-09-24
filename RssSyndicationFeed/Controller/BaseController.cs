@@ -202,5 +202,22 @@ namespace RssSyndicationFeed.Controller
 
             return model;
         }
+
+        public T StartLoading<T>(XElement root, T model) where T : class
+        {
+            foreach (var element in root.Elements())
+            {
+                if (element.Name.NamespaceName == element.GetDefaultNamespace())
+                {
+                    model = DynamicElementLoad(element, model);
+                }
+                else
+                {
+                    model = DynamicExtensionLoad(element, model);
+                }
+            }
+
+            return model;
+        }
     }
 }

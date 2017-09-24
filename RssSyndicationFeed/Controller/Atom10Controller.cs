@@ -18,17 +18,7 @@ namespace RssSyndicationFeed.Controller
         {
             var model = new RssSyndicationFeedContext();
 
-            foreach (var element in document.Root.Elements())
-            {
-                if (element.Name.NamespaceName == document.Root.GetDefaultNamespace())
-                {
-                    model = DynamicElementLoad(element, model);
-                }
-                else
-                {
-                    model = DynamicExtensionLoad(element, model);
-                }
-            }
+            model = StartLoading(document.Root, model);
 
             return model;
         }

@@ -23,19 +23,8 @@ namespace RssSyndicationFeed.Controller
         public RssSyndicationFeedContext Load(XDocument document)
         {
             var model = new RssSyndicationFeedContext();
-            var channel = document.Root.Elements();
 
-            foreach (var element in channel.Elements())
-            {
-                if (string.IsNullOrEmpty(element.Name.NamespaceName))
-                {
-                    model = DynamicElementLoad(element, model);
-                }
-                else
-                {
-                    model = DynamicExtensionLoad(element, model);
-                }
-            }
+            model = StartLoading(document.Root.Element("channel"), model);
 
             return model;
         }
