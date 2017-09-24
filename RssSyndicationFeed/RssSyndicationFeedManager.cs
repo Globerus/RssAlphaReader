@@ -11,29 +11,27 @@ namespace RssSyndicationFeed
     {
         public static RssSyndicationFeedContext Load(XmlReader xml)
         {
-            RssSyndicationFeedContext rssSyndicationFeed = new RssSyndicationFeedContext();
-
             var document = XDocument.Load(xml);
             var root = document.Root;
 
-            var formatter = GlobalConstants.SupportedFormatters
-                                           .Where(e => e.Key == root.Name.LocalName)
-                                           .Select(e => e.Value)
-                                           .FirstOrDefault();
-            if (formatter != null)
+            Type formatter;
+
+            if (!GlobalConstants.SupportedFormatters.TryGetValue(root.Name.LocalName, out formatter))
             {
-                var formatterObject = Activator.CreateInstance(formatter);
-
-                var bootstrapper = GlobalConstants.BootstrapMethods
-                                                  .Where(e => e.Key == root.Name.LocalName)
-                                                  .Select(e => e.Value)
-                                                  .FirstOrDefault();
-
-                rssSyndicationFeed = formatter.GetMethod(bootstrapper)
-                                              .Invoke(formatterObject, new[] { document }) as RssSyndicationFeedContext;
+                return null;
             }
 
-            return rssSyndicationFeed;
+            var formatterObject = Activator.CreateInstance(formatter);
+
+            var bootstrapper = GlobalConstants.BootstrapMethods
+                                              .Where(e => e.Key == root.Name.LocalName)
+                                              .Select(e => e.Value)
+                                              .FirstOrDefault();
+
+            var feed = formatter.GetMethod(bootstrapper)
+                                .Invoke(formatterObject, new[] { document });
+
+            return feed as RssSyndicationFeedContext;
         }
     }
 }
