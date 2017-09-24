@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RssAlphaReader.Model.SubContent
 {
-    public class RssSyndicationGuid
+    public class RssGuid
     {
         public string Id { get; set; }
         public string IsPermaLink { get; set; }

@@ -13,7 +13,7 @@ namespace RssAlphaReader.Configuration
             { "domain", typeof(string) },
             { "length", typeof(string) },
             { "type", typeof(string) },
-            { "url", typeof(RssSyndicationLink) },
+            { "url", typeof(RssLink) },
             { "isPermaLink", typeof(string) }
         };
 
@@ -34,27 +34,27 @@ namespace RssAlphaReader.Configuration
 
         public Dictionary<string, Type> ElementToType { get; set; } = new Dictionary<string, Type>
         {
-            { "author", typeof(RssSyndicationPerson) },
-            { "category", typeof(RssSyndicationCategory) },
-            { "comments", typeof(RssSyndicationLink) },
-            { "copyright", typeof(RssSyndicationText) },
-            { "description", typeof(RssSyndicationText) },
-            { "enclosure", typeof(RssSyndicationEnclosure) },
+            { "author", typeof(RssPerson) },
+            { "category", typeof(RssCategory) },
+            { "comments", typeof(RssLink) },
+            { "copyright", typeof(RssText) },
+            { "description", typeof(RssText) },
+            { "enclosure", typeof(RssEnclosure) },
             { "generator", typeof(string) },
-            { "guid", typeof(RssSyndicationGuid) },
+            { "guid", typeof(RssGuid) },
             { "height", typeof(string) },
-            { "image", typeof(RssSyndicationImage) },
-            { "item", typeof(RssSyndicationItem) },
+            { "image", typeof(RssImage) },
+            { "item", typeof(RssItem) },
             { "language", typeof(string) },
             { "lastBuildDate", typeof(string) },
-            { "link", typeof(RssSyndicationLink) },
-            { "managingEditor", typeof(RssSyndicationPerson) },
+            { "link", typeof(RssLink) },
+            { "managingEditor", typeof(RssPerson) },
             { "pubDate", typeof(string) },
-            { "source", typeof(RssSyndicationText) },
-            { "title", typeof(RssSyndicationText) },
+            { "source", typeof(RssText) },
+            { "title", typeof(RssText) },
             { "ttl", typeof(string) },
-            { "url", typeof(RssSyndicationLink) },
-            { "webMaster", typeof(RssSyndicationPerson) },
+            { "url", typeof(RssLink) },
+            { "webMaster", typeof(RssPerson) },
             { "width", typeof(string) }
         };
 

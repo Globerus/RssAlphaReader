@@ -29,7 +29,7 @@ namespace RssAlphaReader.Configuration
             { "start", typeof(string) },
             { "time", typeof(string) },
             { "type", typeof(string) },
-            { "url", typeof(RssSyndicationLink) },
+            { "url", typeof(RssLink) },
             { "width", typeof(string) }
         };
 
@@ -72,18 +72,18 @@ namespace RssAlphaReader.Configuration
 
         public Dictionary<string, Type> ElementToType { get; set; } = new Dictionary<string, Type>
         {
-            { "category", typeof(RssSyndicationCategory) },
+            { "category", typeof(RssCategory) },
             { "content", typeof(MediaRssContent) },
             { "copyright", typeof(MediaRssCopyright) },
             { "credit", typeof(MediaRssCredit) },
-            { "description", typeof(RssSyndicationText) },
+            { "description", typeof(RssText) },
             { "hash", typeof(MediaRssHash) },
             { "keywords", typeof(string) },
             { "player", typeof(MediaRssPlayer) },
             { "rating", typeof(MediaRssRating) },
             { "text", typeof(MediaRssText) },
             { "thumbnails", typeof(MediaRssThumbnails) },
-            { "title", typeof(RssSyndicationText) }
+            { "title", typeof(RssText) }
         };
 
         public Dictionary<string, string> ElementToProperty { get; set; } = new Dictionary<string, string>

@@ -1,7 +1,7 @@
 ﻿
 namespace RssAlphaReader.Model.SubContent
 {
-    public class RssSyndicationCategory
+    public class RssCategory
     {
         public string Term { get; set; }
         public string Label { get; set; }

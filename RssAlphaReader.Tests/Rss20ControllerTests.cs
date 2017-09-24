@@ -22,7 +22,7 @@ namespace RssAlphaReader.Tests
         {
             string xml = "<author>Мирела Веселинова</author>";
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Мирела Веселинова", rss.Author.Email);
@@ -31,17 +31,13 @@ namespace RssAlphaReader.Tests
         [TestMethod]
         public void ProcessDescription_IsCorrect()
         {
-            //string xml = @"<summary type='html' xml:base='http://www.theregister.co.uk/'>&lt;h4&gt;Sorta, kinda, well not really&lt;/h4&gt; &lt;p&gt;Google has promised to end the infuriating autoplay of videos in its Chrome browser вЂ“ but with a heap of exceptions that may actually make the problem worse.вЂ¦&lt;/p&gt;</summary>";
-
             string xml = "<description>Hello, World Description</description>";
-            //var decodedLink = WebUtility.HtmlDecode("&lt;h4&gt;Sorta, kinda, well not really&lt;/h4&gt; &lt;p&gt;Google has promised to end the infuriating autoplay of videos in its Chrome browser вЂ“ but with a heap of exceptions that may actually make the problem worse.вЂ¦&lt;/p&gt;");
-
+            
             var document = GenerateDocumentFromXML(xml);
-            //var description = rss20Controller.ProcessDescription(document);
-            var rss = new RssAlphaReaderContext();
+
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
-            //Assert.AreEqual("html", description.Type);
-            //Assert.AreEqual(decodedLink, description.Description);
+
             Assert.AreEqual("Hello, World Description", rss.Description.Text);
         }
 
@@ -51,7 +47,7 @@ namespace RssAlphaReader.Tests
             var xml = "<category domain='http://www.fool.com/cusips'>MSFT</category>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("http://www.fool.com/cusips", rss.Category.Scheme);
@@ -64,7 +60,7 @@ namespace RssAlphaReader.Tests
             var xml = "<generator>MightyInHouse Content System v2.3</generator>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("MightyInHouse Content System v2.3", rss.Generator);
@@ -76,7 +72,7 @@ namespace RssAlphaReader.Tests
             var xml = "<guid isPermaLink='true'>http://inessential.com/2002/09/01.php#a2</guid>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("true", rss.Guid.IsPermaLink);
@@ -96,7 +92,7 @@ namespace RssAlphaReader.Tests
                         </image>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Dnes.BG", rss.Image.Description.Text);
@@ -113,7 +109,7 @@ namespace RssAlphaReader.Tests
             string xml = "<height>400</height>";
 
             var document = GenerateDocumentFromXML(xml);
-            var image = new RssSyndicationImage();
+            var image = new RssImage();
             image = rss20Controller.ProcessElement(document, image);
 
             Assert.AreEqual("400", image.Height);
@@ -125,7 +121,7 @@ namespace RssAlphaReader.Tests
             string xml = "<lastBuildDate>Sat, 16 Sep 2017 14:37:46 GMT</lastBuildDate>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Sat, 16 Sep 2017 14:37:46 GMT", rss.LastBuildDate);
@@ -137,7 +133,7 @@ namespace RssAlphaReader.Tests
             string xml = "<link>http://www.cnn.com/app-international-edition/index.html</link>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("http://www.cnn.com/app-international-edition/index.html", rss.Link.FirstOrDefault()?.Href);
@@ -149,7 +145,7 @@ namespace RssAlphaReader.Tests
             string xml = "<managingEditor>geo@herald.com (George Matesky)</managingEditor>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("geo@herald.com (George Matesky)", rss.ManagingEditor.Email);
@@ -161,7 +157,7 @@ namespace RssAlphaReader.Tests
             string xml = "<pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Sat, 07 Sep 2002 00:00:01 GMT", rss.PubDate);
@@ -173,7 +169,7 @@ namespace RssAlphaReader.Tests
             string xml = "<title>Hello, World</title>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Hello, World", rss.Title.Text);
@@ -185,7 +181,7 @@ namespace RssAlphaReader.Tests
             string xml = "<comments>www.yahoo.com</comments>";
 
             var document = GenerateDocumentFromXML(xml);
-            var item = new RssSyndicationItem();
+            var item = new RssItem();
             item = rss20Controller.ProcessElement(document, item);
 
             Assert.AreEqual("www.yahoo.com", item.Comments.Href);
@@ -197,7 +193,7 @@ namespace RssAlphaReader.Tests
             string xml = "<enclosure url='http://www.scripting.com/mp3s/weatherReportSuite.mp3' length='12216320' type='audio/mpeg' />";
 
             var document = GenerateDocumentFromXML(xml);
-            var item = new RssSyndicationItem();
+            var item = new RssItem();
             item = rss20Controller.ProcessElement(document, item);
 
             Assert.AreEqual("http://www.scripting.com/mp3s/weatherReportSuite.mp3", item.Enclosure.Url.Href);
@@ -211,7 +207,7 @@ namespace RssAlphaReader.Tests
             string xml = "<source url='http://www.tomalak.org/links2.xml'>Tomalak's Realm</source>";
 
             var document = GenerateDocumentFromXML(xml);
-            var item = new RssSyndicationItem();
+            var item = new RssItem();
             item = rss20Controller.ProcessElement(document, item);
 
             Assert.AreEqual("Tomalak's Realm", item.Source.Text);
@@ -224,7 +220,7 @@ namespace RssAlphaReader.Tests
             string xml = "<width>222</width>";
 
             var document = GenerateDocumentFromXML(xml);
-            var image = new RssSyndicationImage();
+            var image = new RssImage();
             image = rss20Controller.ProcessElement(document, image);
 
             Assert.AreEqual("222", image.Width);
@@ -236,7 +232,7 @@ namespace RssAlphaReader.Tests
             string xml = "<copyright>Copyright 2002, Spartanburg Herald-Journal</copyright>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Copyright 2002, Spartanburg Herald-Journal", rss.Copyright.Text);
@@ -272,7 +268,7 @@ namespace RssAlphaReader.Tests
                             </item>";
 
             var document = GenerateDocumentFromXML(xml);
-            var rss = new RssAlphaReaderContext();
+            var rss = new RssFeed();
             rss = rss20Controller.ProcessElement(document, rss);
 
             Assert.AreEqual("Hello, World", rss.Items.FirstOrDefault()?.Title.Text);
@@ -291,40 +287,13 @@ namespace RssAlphaReader.Tests
             Assert.AreEqual("http://www.tomalak.org/links2.xml", rss.Items.FirstOrDefault()?.Source.Url.Href);
             Assert.AreEqual("Tomalak's Realm", rss.Items.FirstOrDefault()?.Source.Text);
 
-            var mediaRss = rss.Items.FirstOrDefault()?.Extensions.FirstOrDefault()?.Context as MediaRssExtensionContext;
+            var mediaRss = rss.Items.FirstOrDefault()?.Extensions.FirstOrDefault()?.Model as MediaRssExtension;
 
             Assert.AreEqual("image", mediaRss.Group.FirstOrDefault()?.Medium);
             Assert.AreEqual("http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-super-169.jpg", mediaRss.Group.FirstOrDefault()?.Url.Href);
             Assert.AreEqual("619", mediaRss.Group.FirstOrDefault()?.Height);
             Assert.AreEqual("1100", mediaRss.Group.FirstOrDefault()?.Width);
         }
-
-        //[TestMethod]
-        //public void ProcessExtension_IsCorrect()
-        //{
-        //    string xml = @"<media:group xmlns:media='http://search.yahoo.com/mrss/'>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-super-169.jpg' height='619' width='1100'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-large-11.jpg' height='300' width='300'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-vertical-large-gallery.jpg' height='552' width='414'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-video-synd-2.jpg' height='480' width='640'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-live-video.jpg' height='324' width='576' />
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-t1-main.jpg' height='250' width='250'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-vertical-gallery.jpg' height='360' width='270'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-story-body.jpg' height='169' width = '300'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-t1-main.jpg' height='250' width='250'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-assign.jpg' height='186' width='248'/>
-        //                        <media:content medium='image' url='http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-hp-video.jpg' height='144' width='256'/>
-        //                   </media:group>";
-
-        //    var document = GenerateDocumentFromXML(xml);
-        //    var extension = rss20Controller.DynamicExtensionLoad(document) as RssSyndicationExtension;
-        //    var mediaRss = extension.Context as MediaRssExtensionContext;
-
-        //    Assert.AreEqual("image", mediaRss.Content.Medium);
-        //    Assert.AreEqual("http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-super-169.jpg", mediaRss.Content.Url);
-        //    Assert.AreEqual("619", mediaRss.Content.Height);
-        //    Assert.AreEqual("1100", mediaRss.Content.Width);
-        //}
 
         private XElement GenerateDocumentFromXML(string xml)
         {

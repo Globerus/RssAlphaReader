@@ -52,12 +52,11 @@
     <Compile Include="Controller\MediaRssController.cs" />
     <Compile Include="Controller\Rss20Controller.cs" />
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssText.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationGuid.cs" />
-    <Compile Include="RssSyndicationFeedManager.cs" />
-    <Compile Include="Model\RssSyndicationFeedContext.cs" />
+    <Compile Include="Model\SubContent\RssGuid.cs" />
+    <Compile Include="Model\RssFeed.cs" />
     <Compile Include="Model\SubContent\Metadata\DublinCoreContext\DublinCoreExtensionContext.cs" />
-    <Compile Include="Model\Interface\IContext.cs" />
-    <Compile Include="Model\SubContent\Metadata\MediaRssContext\MediaRssExtensionContext.cs" />
+    <Compile Include="Model\Interface\IModel.cs" />
+    <Compile Include="Model\SubContent\Metadata\MediaRssContext\MediaRssExtension.cs" />
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssContent.cs" />
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssCopyright.cs" />
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssCredit.cs" />
@@ -65,14 +64,14 @@
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssPlayer.cs" />
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssRating.cs" />
     <Compile Include="Model\SubContent\Metadata\MediaRssContext\SubContent\MediaRssThumbnails.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationCategory.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationEnclosure.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationExtension.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationImage.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationItem.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationLink.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationPerson.cs" />
-    <Compile Include="Model\SubContent\RssSyndicationText.cs" />
+    <Compile Include="Model\SubContent\RssCategory.cs" />
+    <Compile Include="Model\SubContent\RssEnclosure.cs" />
+    <Compile Include="Model\SubContent\RssExtension.cs" />
+    <Compile Include="Model\SubContent\RssImage.cs" />
+    <Compile Include="Model\SubContent\RssItem.cs" />
+    <Compile Include="Model\SubContent\RssLink.cs" />
+    <Compile Include="Model\SubContent\RssPerson.cs" />
+    <Compile Include="Model\SubContent\RssText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

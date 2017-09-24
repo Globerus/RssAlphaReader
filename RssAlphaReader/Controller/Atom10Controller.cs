@@ -14,23 +14,19 @@ namespace RssAlphaReader.Controller
 
         }
 
-        public RssAlphaReaderContext Load(XDocument document)
+        public RssFeed Load(XDocument document, RssFeed model)
         {
-            var model = new RssAlphaReaderContext();
-
-            model = ProcessChildrenElements(document.Root, model);
-
-            return model;
+            return ProcessChildrenElements(document.Root, model);
         }
 
-        public void LoadExtension(RssSyndicationExtension extension, XElement element)
+        public void LoadExtension(RssExtension extension, XElement element)
         {
-            if(extension.Context == null)
+            if(extension.Model == null)
             {
-                extension.Context = new RssAlphaReaderContext();
+                extension.Model = new RssFeed();
             }
 
-            extension.Context = ProcessExtensionElement(element, extension.Context);
+            extension.Model = ProcessExtensionElement(element, extension.Model);
         }
     }
 }

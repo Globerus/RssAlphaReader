@@ -19,14 +19,14 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.BNT;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
-            var extension = feed.Extensions.FirstOrDefault().Context as RssAlphaReaderContext;
+            var extension = feed.Extensions.FirstOrDefault().Model as RssFeed;
             Assert.AreEqual("http://news.bnt.bg/bg/rss/news.xml", extension.Link.FirstOrDefault()?.Href);
-            Assert.AreEqual("self", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Rel);
-            Assert.AreEqual("application/rss+xml", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Type);
+            Assert.AreEqual("self", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Rel);
+            Assert.AreEqual("application/rss+xml", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Type);
 
             Assert.AreEqual("БНТ Новини", feed.Title.Text);
             Assert.AreEqual("http://news.bnt.bg/", feed.Link.FirstOrDefault()?.Href);
@@ -51,7 +51,7 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.CapitalBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
             Assert.AreEqual("Капитал - България", feed.Title.Text);
@@ -84,7 +84,7 @@ namespace RssAlphaReader.Tests
             
             var xml = Resource.TrafficNewsBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
             Assert.AreEqual("Trafficnews.bg", feed.Title.Text);
@@ -107,13 +107,13 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.VestiBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
-            Assert.AreEqual("https://www.vesti.bg/rss", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Href);
-            Assert.AreEqual("self", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Rel);
-            Assert.AreEqual("application/rss+xml", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Type);
+            Assert.AreEqual("https://www.vesti.bg/rss", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Href);
+            Assert.AreEqual("self", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Rel);
+            Assert.AreEqual("application/rss+xml", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Type);
 
             Assert.AreEqual("VESTI.bg", feed.Title.Text);
             Assert.AreEqual("Български и световни новини от бизнеса и политиката. Наука, технологии и медии. Инциденти и произшествия, съдебна система. Любопитно за звездите.", feed.Description.Text);
@@ -138,7 +138,7 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.DnesBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -154,7 +154,7 @@ namespace RssAlphaReader.Tests
             Assert.AreEqual("http://www.dnes.bg/politika/2017/09/16/radev-nedovolen-lobisti-vyrnaha-v-nachaloto-konkursa-za-iztrebitelia.353471", feed.Items.FirstOrDefault()?.Link.FirstOrDefault()?.Href);
             Assert.AreEqual("Това застрашава да приземи окончателно авиацията ни, смята президентът", feed.Items.FirstOrDefault()?.Description.Text);
 
-            Assert.AreEqual("2017-09-16T13:27:00+03:00", ((DublinCoreExtensionContext)feed.Items.LastOrDefault()?.Extensions.FirstOrDefault()?.Context).Date);
+            Assert.AreEqual("2017-09-16T13:27:00+03:00", ((DublinCoreExtension)feed.Items.LastOrDefault()?.Extensions.FirstOrDefault()?.Model).Date);
 
             Assert.AreEqual("http://www.dnes.bg/politika/2017/09/16/radev-nedovolen-lobisti-vyrnaha-v-nachaloto-konkursa-za-iztrebitelia.353471", feed.Items.FirstOrDefault()?.Guid.Id);
             Assert.AreEqual("false", feed.Items.FirstOrDefault()?.Guid.IsPermaLink);
@@ -167,7 +167,7 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.CNN;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -187,8 +187,8 @@ namespace RssAlphaReader.Tests
             Assert.AreEqual("10", feed.Ttl);
 
             var extension = feed.Extensions.Where(e => e.Name == "atom10").FirstOrDefault();
-            var link1 = (extension.Context as RssAlphaReaderContext).Link.Where(l => l.Rel == "self").FirstOrDefault();
-            var link2 = (extension.Context as RssAlphaReaderContext).Link.Where(l => l.Rel == "hub").FirstOrDefault();
+            var link1 = (extension.Model as RssFeed).Link.Where(l => l.Rel == "self").FirstOrDefault();
+            var link2 = (extension.Model as RssFeed).Link.Where(l => l.Rel == "hub").FirstOrDefault();
             Assert.AreEqual("http://rss.cnn.com/rss/edition", link1.Href);
             Assert.AreEqual("self", link1.Rel);
             Assert.AreEqual("application/rss+xml", link1.Type);
@@ -202,7 +202,7 @@ namespace RssAlphaReader.Tests
             Assert.AreEqual("http://cnn.it/2vYYp2j", feed.Items.FirstOrDefault()?.Guid.Id);
             Assert.AreEqual("true", feed.Items.FirstOrDefault()?.Guid.IsPermaLink);
 
-            var mediaRss = feed.Items.FirstOrDefault()?.Extensions.FirstOrDefault()?.Context as MediaRssExtensionContext;
+            var mediaRss = feed.Items.FirstOrDefault()?.Extensions.FirstOrDefault()?.Model as MediaRssExtension;
 
             Assert.AreEqual("image", mediaRss.Group.LastOrDefault()?.Medium);
             Assert.AreEqual("http://i2.cdn.turner.com/cnnnext/dam/assets/170915145033-03-north-korea-tease-only-hp-video.jpg", mediaRss.Group.LastOrDefault()?.Url.Href);
@@ -215,7 +215,7 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.TheRegister;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -264,7 +264,7 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.SportalBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = RssAlphaReaderManager.Load(xReader);
+            var feed = new RssFeed(); feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -273,9 +273,9 @@ namespace RssAlphaReader.Tests
             Assert.AreEqual("Sportal BG", feed.Description.Text);
             Assert.AreEqual("bg", feed.Language);
 
-            Assert.AreEqual("http://www.sportal.bg/uploads/rss_category_0.xml", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Href);
-            Assert.AreEqual("self", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Rel);
-            Assert.AreEqual("application/rss+xml", ((RssAlphaReaderContext)feed.Extensions.FirstOrDefault()?.Context).Link.FirstOrDefault()?.Type);
+            Assert.AreEqual("http://www.sportal.bg/uploads/rss_category_0.xml", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Href);
+            Assert.AreEqual("self", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Rel);
+            Assert.AreEqual("application/rss+xml", ((RssFeed)feed.Extensions.FirstOrDefault()?.Model).Link.FirstOrDefault()?.Type);
 
             Assert.AreEqual("БГ Футбол", feed.Items.FirstOrDefault().Category.Label);
             Assert.AreEqual("Венци Стефанов избухна: Един човек атакува съдиите - Краля слънце (видео)", feed.Items.FirstOrDefault().Title.Text);

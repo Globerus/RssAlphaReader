@@ -15,14 +15,14 @@ namespace RssAlphaReader.Controller
 
         }
 
-        public void LoadExtension(RssSyndicationExtension extension, XElement element)
+        public void LoadExtension(RssExtension extension, XElement element)
         {
-            if (extension.Context == null)
+            if (extension.Model == null)
             {
-                extension.Context = new MediaRssExtensionContext();
+                extension.Model = new MediaRssExtension();
             }
 
-            extension.Context = ProcessExtensionElement(element, extension.Context);
+            extension.Model = ProcessExtensionElement(element, extension.Model);
         }
     }
 }

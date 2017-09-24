@@ -1,7 +1,7 @@
 ﻿
 namespace RssAlphaReader.Model.SubContent
 {
-    public class RssSyndicationLink
+    public class RssLink
     {
         public string Href { get; set; }
         public string Length { get; set; }
