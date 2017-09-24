@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml;
 using System.IO;
 using System.Linq;
@@ -7,7 +6,6 @@ using RssAlphaReader.Model;
 using System.Net;
 using RssAlphaReader.Model.SubContent.Metadata.DublinCoreContext;
 using RssAlphaReader.Model.SubContent.Metadata.MediaRssContext;
-using RssAlphaReader.Tests;
 
 namespace RssAlphaReader.Tests
 {
@@ -19,7 +17,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.BNT;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -51,7 +50,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.CapitalBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
             Assert.AreEqual("Капитал - България", feed.Title.Text);
@@ -84,7 +84,8 @@ namespace RssAlphaReader.Tests
             
             var xml = Resource.TrafficNewsBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
             Assert.AreEqual("Trafficnews.bg", feed.Title.Text);
@@ -107,7 +108,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.VestiBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -138,7 +140,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.DnesBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -167,7 +170,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.CNN;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -215,7 +219,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.TheRegister;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 
@@ -264,7 +269,8 @@ namespace RssAlphaReader.Tests
         {
             var xml = Resource.SportalBG;
             var xReader = GenerateReaderFromXML(xml);
-            var feed = new RssFeed(); feed.Load(xReader);
+            var feed = new RssFeed();
+            feed.Load(xReader);
 
             Assert.IsNotNull(feed);
 

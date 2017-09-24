@@ -1,5 +1,4 @@
-﻿using RssAlphaReader.Model.SubContent;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RssAlphaReader.Model.SubContent
 {

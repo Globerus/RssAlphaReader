@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RssAlphaReader.Model.SubContent.Metadata.MediaRssContext.SubContent
+﻿namespace RssAlphaReader.Model.SubContent.Metadata.MediaRssContext.SubContent
 {
     public class MediaRssText
     {

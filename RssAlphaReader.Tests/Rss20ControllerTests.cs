@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RssAlphaReader.Controller;
 using System.Xml.Linq;
 using System.IO;
 using System.Xml;
-using System.Net;
 using System.Linq;
 using RssAlphaReader.Model.SubContent;
 using RssAlphaReader.Model.SubContent.Metadata.MediaRssContext;

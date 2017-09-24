@@ -1,7 +1,5 @@
 ﻿using RssAlphaReader.Configuration;
 using RssAlphaReader.Configuration.Interface;
-using RssAlphaReader.Model.Interface;
-using RssAlphaReader.Model.SubContent;
 using System;
 using System.Collections;
 using System.Collections.Generic;

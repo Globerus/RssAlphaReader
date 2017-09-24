@@ -1,5 +1,4 @@
 ﻿using RssAlphaReader.Configuration.Interface;
-using RssAlphaReader.Controller;
 using RssAlphaReader.Model.SubContent;
 using RssAlphaReader.Model.SubContent.Metadata.MediaRssContext.SubContent;
 using System;

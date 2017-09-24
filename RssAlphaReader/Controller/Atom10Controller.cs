@@ -1,7 +1,6 @@
 ﻿using RssAlphaReader.Configuration;
 using RssAlphaReader.Model;
 using RssAlphaReader.Model.SubContent;
-using System.Linq;
 using System.Xml.Linq;
 
 namespace RssAlphaReader.Controller
